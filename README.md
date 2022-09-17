@@ -10,6 +10,17 @@ datasets:
 
 # BERT base model (uncased)
 
+## Table of Contents
+- [Model description](#model-description)
+- [Model variations](#model-variations)
+- [Intended uses and limitations](#intended-uses-and-limitations)
+- [How to use](#how-to-use)
+- [Limitations and bias](#limitations-and-bias)
+- [Training data](#training-data)
+- [Evaluation results](#evaluation-results)
+- [BibTeX entry and citation info](#bibtex-entry-and-citation-info)
+
+
 Pretrained model on English language using a masked language modeling (MLM) objective. It was introduced in
 [this paper](https://arxiv.org/abs/1810.04805) and first released in
 [this repository](https://github.com/google-research/bert). This model is uncased: it does not make a difference
@@ -18,7 +29,7 @@ between english and English.
 Disclaimer: The team releasing BERT did not write a model card for this model so this model card has been written by
 the Hugging Face team.
 
-## Model description
+## Model Description
 
 BERT is a transformers model pretrained on a large corpus of English data in a self-supervised fashion. This means it
 was pretrained on the raw texts only, with no humans labelling them in any way (which is why it can use lots of
@@ -38,7 +49,27 @@ This way, the model learns an inner representation of the English language that 
 useful for downstream tasks: if you have a dataset of labeled sentences for instance, you can train a standard
 classifier using the features produced by the BERT model as inputs.
 
-## Intended uses & limitations
+## Model variations
+
+BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
+Chinese and multilingual uncased and cased versions followed shortly after.  
+Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
+Other 24 smaller models are released aftwrwards.  
+
+The detailed release history can be found on the [google-research/bert readme](https://github.com/google-research/bert/blob/master/README.md) on github.
+
+| Model | #params | Language |
+|------------------------|--------------------------------|-------|
+| [`bert-base-uncased`](https://huggingface.co/bert-base-uncased) | 110M   | English |
+| [`bert-large-uncased`](https://huggingface.co/bert-large-uncased)              | 340M    | English | sub word
+| [`bert-base-cased`](https://huggingface.co/bert-base-cased)        | 110M    | English |
+| [`bert-large-cased`](https://huggingface.co/bert-large-cased) | 340M    |  English |
+| [`bert-base-chinese`](https://huggingface.co/bert-base-chinese) | 110M    | Chinese |
+| [`bert-base-multilingual-cased`](https://huggingface.co/bert-base-multilingual-cased) | 110M | Multiple |
+| [`bert-large-uncased-whole-word-masking`](https://huggingface.co/bert-large-uncased-whole-word-masking) | 340M | English |
+| [`bert-large-cased-whole-word-masking`](https://huggingface.co/bert-large-cased-whole-word-masking) | 340M | English |
+
+## Intended uses and limitations
 
 You can use the raw model for either masked language modeling or next sentence prediction, but it's mostly intended to
 be fine-tuned on a downstream task. See the [model hub](https://huggingface.co/models?filter=bert) to look for
