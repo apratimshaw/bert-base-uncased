@@ -38,6 +38,26 @@ This way, the model learns an inner representation of the English language that 
 useful for downstream tasks: if you have a dataset of labeled sentences for instance, you can train a standard
 classifier using the features produced by the BERT model as inputs.
 
+## Model variations
+
+BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
+Chinese and multilingual uncased and cased versions followed shortly after.  
+Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
+Other 24 smaller models are released aftwrwards.  
+
+The detailed release history can be found on the [google-research/bert readme](https://github.com/google-research/bert/blob/master/README.md) on github.
+
+| Model | #params | Language |
+|------------------------|--------------------------------|-------|
+| [`bert-base-uncased`](https://huggingface.co/bert-base-uncased) | 110M   | English |
+| [`bert-large-uncased`](https://huggingface.co/bert-large-uncased)              | 340M    | English | sub 
+| [`bert-base-cased`](https://huggingface.co/bert-base-cased)        | 110M    | English |
+| [`bert-large-cased`](https://huggingface.co/bert-large-cased) | 340M    |  English |
+| [`bert-base-chinese`](https://huggingface.co/bert-base-chinese) | 110M    | Chinese |
+| [`bert-base-multilingual-cased`](https://huggingface.co/bert-base-multilingual-cased) | 110M | Multiple |
+| [`bert-large-uncased-whole-word-masking`](https://huggingface.co/bert-large-uncased-whole-word-masking) | 340M | English |
+| [`bert-large-cased-whole-word-masking`](https://huggingface.co/bert-large-cased-whole-word-masking) | 340M | English |
+
 ## Intended uses & limitations
 
 You can use the raw model for either masked language modeling or next sentence prediction, but it's mostly intended to
