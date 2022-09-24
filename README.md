@@ -43,7 +43,7 @@ classifier using the features produced by the BERT model as inputs.
 BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
 Chinese and multilingual uncased and cased versions followed shortly after.  
 Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
-Other 24 smaller models are released aftwrwards.  
+Other 24 smaller models are released afterwards.  
 
 The detailed release history can be found on the [google-research/bert readme](https://github.com/google-research/bert/blob/master/README.md) on github.
 
