@@ -21,21 +21,21 @@ the Hugging Face team.
 ## Model description
 
 BERT is a transformers model pretrained on a large corpus of English data in a self-supervised fashion. This means it
-was pretrained on the raw texts only, with no humans labelling them in any way (which is why it can use lots of
+was pretrained on the raw texts only, with no humans labeling them in any way (which is why it can use lots of
 publicly available data) with an automatic process to generate inputs and labels from those texts. More precisely, it
 was pretrained with two objectives:
 
 - Masked language modeling (MLM): taking a sentence, the model randomly masks 15% of the words in the input then run
   the entire masked sentence through the model and has to predict the masked words. This is different from traditional
   recurrent neural networks (RNNs) that usually see the words one after the other, or from autoregressive models like
-  GPT which internally mask the future tokens. It allows the model to learn a bidirectional representation of the
+  GPT which internally masks the future tokens. It allows the model to learn a bidirectional representation of the
   sentence.
 - Next sentence prediction (NSP): the models concatenates two masked sentences as inputs during pretraining. Sometimes
   they correspond to sentences that were next to each other in the original text, sometimes not. The model then has to
   predict if the two sentences were following each other or not.
 
 This way, the model learns an inner representation of the English language that can then be used to extract features
-useful for downstream tasks: if you have a dataset of labeled sentences for instance, you can train a standard
+useful for downstream tasks: if you have a dataset of labeled sentences, for instance, you can train a standard
 classifier using the features produced by the BERT model as inputs.
 
 ## Model variations
@@ -43,7 +43,7 @@ classifier using the features produced by the BERT model as inputs.
 BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
 Chinese and multilingual uncased and cased versions followed shortly after.  
 Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
-Other 24 smaller models are released afterwards.  
+Other 24 smaller models are released afterward.  
 
 The detailed release history can be found on the [google-research/bert readme](https://github.com/google-research/bert/blob/master/README.md) on github.
 
@@ -62,7 +62,7 @@ The detailed release history can be found on the [google-research/bert readme](h
 
 You can use the raw model for either masked language modeling or next sentence prediction, but it's mostly intended to
 be fine-tuned on a downstream task. See the [model hub](https://huggingface.co/models?filter=bert) to look for
-fine-tuned versions on a task that interests you.
+fine-tuned versions of a task that interests you.
 
 Note that this model is primarily aimed at being fine-tuned on tasks that use the whole sentence (potentially masked)
 to make decisions, such as sequence classification, token classification or question answering. For tasks such as text
@@ -195,7 +195,7 @@ then of the form:
 [CLS] Sentence A [SEP] Sentence B [SEP]
 ```
 
-With probability 0.5, sentence A and sentence B correspond to two consecutive sentences in the original corpus and in
+With probability 0.5, sentence A and sentence B correspond to two consecutive sentences in the original corpus, and in
 the other cases, it's another random sentence in the corpus. Note that what is considered a sentence here is a
 consecutive span of text usually longer than a single sentence. The only constrain is that the result with the two
 "sentences" has a combined length of less than 512 tokens.
