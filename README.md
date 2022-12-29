@@ -8,7 +8,7 @@ datasets:
 - wikipedia
 ---
 
-# BERT base model (uncased)
+#### BERT base model (uncased)
 
 Pretrained model on English language using a masked language modeling (MLM) objective. It was introduced in
 [this paper](https://arxiv.org/abs/1810.04805) and first released in
