@@ -1,251 +1,251 @@
 ---
-language: en
-tags:
-- exbert
-license: apache-2.0
-datasets:
-- bookcorpus
-- wikipedia
+语言: 半方
+标签:
+- 埃克伯特
+许可证: 数据集2.0
+数据集:
+- 图书语料库
+- 维基百科
 ---
 
-# BERT base model (uncased)
+#伯特基本模型（无案例）
 
-Pretrained model on English language using a masked language modeling (MLM) objective. It was introduced in
-[this paper](https://arxiv.org/abs/1810.04805) and first released in
-[this repository](https://github.com/google-research/bert). This model is uncased: it does not make a difference
-between english and English.
+使用蒙版语言建模（传销）目标的英语语言预训练模型。年推出的
+[这篇论文](https://arxiv.org/abs/1810.04805)并首次发布于
+[这个仓库](https://github.com/google-research/bert). 这个模型是无壳的：它没有什么区别。
+在英语和英语之间。
 
-Disclaimer: The team releasing BERT did not write a model card for this model so this model card has been written by
-the Hugging Face team.
+免责声明：发布BERT的团队没有为这个模型写一个模型卡，所以这个模型卡是由
+拥抱脸团队。
 
-## Model description
+##模型描述
 
-BERT is a transformers model pretrained on a large corpus of English data in a self-supervised fashion. This means it
-was pretrained on the raw texts only, with no humans labeling them in any way (which is why it can use lots of
-publicly available data) with an automatic process to generate inputs and labels from those texts. More precisely, it
-was pretrained with two objectives:
+BERT是一个以自我监督的方式对大量英语数据进行预培训的变压器模型。这就是我的意思
+只对原始文本进行了预训练，没有人以任何方式标记它们（这就是为什么它可以使用大量的
+可公开获取的数据），通过自动过程从这些文本中生成输入和标签。更准确地说，它
+进行了预培训，目标有两个：
 
-- Masked language modeling (MLM): taking a sentence, the model randomly masks 15% of the words in the input then run
-  the entire masked sentence through the model and has to predict the masked words. This is different from traditional
-  recurrent neural networks (RNNs) that usually see the words one after the other, or from autoregressive models like
-  GPT which internally masks the future tokens. It allows the model to learn a bidirectional representation of the
-  sentence.
-- Next sentence prediction (NSP): the models concatenates two masked sentences as inputs during pretraining. Sometimes
-  they correspond to sentences that were next to each other in the original text, sometimes not. The model then has to
-  predict if the two sentences were following each other or not.
+—屏蔽语言建模（传销）：取一个句子，该模型随机屏蔽输入中15%的单词，然后运行
+通过该模型对整个蒙面句进行预测，并对蒙面词进行预测。这是不同于传统的
+递归神经网络（RNNs），通常看到一个接一个的话，或从自回归模型，如
+GPT，它在内部屏蔽未来令牌。它允许模型学习一个双向表示的
+句子
+—下一句预测（NSP）：在预训练过程中，模型连接两个被屏蔽的句子作为输入。有时
+它们对应于原文中相邻的句子，有时不对应。然后模型必须
+预测这两个句子是否前后一致。
 
-This way, the model learns an inner representation of the English language that can then be used to extract features
-useful for downstream tasks: if you have a dataset of labeled sentences, for instance, you can train a standard
-classifier using the features produced by the BERT model as inputs.
+通过这种方式，该模型学习英语语言的内部表示，然后可用于提取特征
+对于下游任务很有用：例如，如果您有一个标记句子的数据集，您可以训练一个标准的
+分类器使用BERT模型产生的特征作为输入。
 
-## Model variations
+##模型变化
 
-BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
-Chinese and multilingual uncased and cased versions followed shortly after.  
-Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
-Other 24 smaller models are released afterward.  
+BERT最初已经发布了基本和大的变化，为大小写和非大小写输入文本。非套色模型还去掉了重音标记。  
+中文和多语言的非加壳和加壳版本之后不久。  
+修改后的预处理与全字掩蔽取代子块掩蔽在随后的工作中，与两个模型的释放。  
+其他24个较小的模型发布后。
 
-The detailed release history can be found on the [google-research/bert readme](https://github.com/google-research/bert/blob/master/README.md) on github.
+详细的发布历史记录可以在[谷歌研究/伯特自述](https://github.com/google-research/bert/blob/master/README.md)在推特上。
 
-| Model | #params | Language |
+模型参数语言
 |------------------------|--------------------------------|-------|
-| [`bert-base-uncased`](https://huggingface.co/bert-base-uncased) | 110M   | English |
-| [`bert-large-uncased`](https://huggingface.co/bert-large-uncased)              | 340M    | English | sub 
-| [`bert-base-cased`](https://huggingface.co/bert-base-cased)        | 110M    | English |
-| [`bert-large-cased`](https://huggingface.co/bert-large-cased) | 340M    |  English |
-| [`bert-base-chinese`](https://huggingface.co/bert-base-chinese) | 110M    | Chinese |
-| [`bert-base-multilingual-cased`](https://huggingface.co/bert-base-multilingual-cased) | 110M | Multiple |
-| [`bert-large-uncased-whole-word-masking`](https://huggingface.co/bert-large-uncased-whole-word-masking) | 340M | English |
-| [`bert-large-cased-whole-word-masking`](https://huggingface.co/bert-large-cased-whole-word-masking) | 340M | English |
+| [`bert-base-uncased`](https://huggingface.co/bert-base-uncased)英语
+| [`大无壳`](https://huggingface.co/bert-large-uncased)340M
+| [`贝尔特式`](https://huggingface.co/bert-base-cased)英语
+| [`伯特大箱`](https://huggingface.co/bert-large-cased)英语
+| [`柏特汉语`](https://huggingface.co/bert-base-chinese)中国大陆
+| [`bert-base-multilingual-cased`](https://huggingface.co/bert-base-multilingual-cased) | 110多重|
+| [`bert-large-uncased-whole-word-masking`](https://huggingface.co/bert-large-uncased-whole-word-masking)英语
+| [`bert-large-cased-whole-word-masking`](https://huggingface.co/bert-large-cased-whole-word-masking)英语
 
-## Intended uses & limitations
+##预期用途和限制
 
-You can use the raw model for either masked language modeling or next sentence prediction, but it's mostly intended to
-be fine-tuned on a downstream task. See the [model hub](https://huggingface.co/models?filter=bert) to look for
-fine-tuned versions of a task that interests you.
+您可以将原始模型用于屏蔽语言建模或下一句预测，但它主要用于
+对下游任务进行微调。请参阅[模型中心](https://huggingface.co/models?filter=bert)寻找
+您感兴趣的任务的微调版本。
 
-Note that this model is primarily aimed at being fine-tuned on tasks that use the whole sentence (potentially masked)
-to make decisions, such as sequence classification, token classification or question answering. For tasks such as text
-generation you should look at model like GPT2.
+请注意，该模型的主要目的是在使用整个句子的任务（可能是屏蔽的）上进行微调。
+进行决策，如序列分类、标记分类或问题回答。对于任务（如文本
+代你应该看看模型像GPT 2。
 
-### How to use
+###如何使用
 
-You can use this model directly with a pipeline for masked language modeling:
+您可以将此模型直接与管道一起使用，以进行屏蔽语言建模:
 
-```python
->>> from transformers import pipeline
->>> unmasker = pipeline('fill-mask', model='bert-base-uncased')
->>> unmasker("Hello I'm a [MASK] model.")
+```大蟒
+>>> 从变压器进口管道
+>>> 无掩码=管道（“填充掩码”，模型=“基于伯特—无套管”）
+>>> 揭开伪装者（"你好我是【面具】模特。")
 
-[{'sequence': "[CLS] hello i'm a fashion model. [SEP]",
-  'score': 0.1073106899857521,
-  'token': 4827,
-  'token_str': 'fashion'},
- {'sequence': "[CLS] hello i'm a role model. [SEP]",
-  'score': 0.08774490654468536,
-  'token': 2535,
-  'token_str': 'role'},
- {'sequence': "[CLS] hello i'm a new model. [SEP]",
-  'score': 0.05338378623127937,
-  'token': 2047,
-  'token_str': 'new'},
- {'sequence': "[CLS] hello i'm a super model. [SEP]",
-  'score': 0.04667217284440994,
-  'token': 3565,
-  'token_str': 'super'},
- {'sequence': "[CLS] hello i'm a fine model. [SEP]",
-  'score': 0.027095865458250046,
-  'token': 2986,
-  'token_str': 'fine'}]
+序列：“你好，我是时装模特。【九月】”,
+'得分'：0.1073106899857521
+代币：4827
+“时尚”的标签
+序列：“【CLS】你好，我是一个榜样。【九月】”,
+'得分：0.08774490654468536
+代币2535元
+字符串：“角色”
+序列：“你好，我是新模特。【九月】”,
+'得分'：0.05338378623127937
+代币：2047年
+token_str：新的字符串，
+序列：“你好，我是超级模特。【九月】”,
+'得分：0.04667217284440994
+代币：3565
+'令牌_str：'超级的'}，
+序列：“【CLS】你好，我是一个很好的模特。【九月】”,
+'得分'：0.027095865458250046
+代币：2986
+字符串：‘很好’}
 ```
 
-Here is how to use this model to get the features of a given text in PyTorch:
+下面是如何使用该模型在PyTorch中获取给定文本的特征：
 
-```python
-from transformers import BertTokenizer, BertModel
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained("bert-base-uncased")
-text = "Replace me by any text you'd like."
-encoded_input = tokenizer(text, return_tensors='pt')
-output = model(**encoded_input)
+```大蟒
+从变压器导入BertTokenizer,BertModel
+标记器=BertTokenizer.from_pretrained('bert-base-uncased')
+模型=BertModel.from_pretrained（"Be rt-base-uncased"）
+文本=“把我换成任何你喜欢的短信。”
+encoded_input=标记器（文本，return_tensors='pt'）
+输出=模型（**编码输入）
 ```
 
-and in TensorFlow:
+在TensorFlow中：
 
-```python
-from transformers import BertTokenizer, TFBertModel
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = TFBertModel.from_pretrained("bert-base-uncased")
-text = "Replace me by any text you'd like."
-encoded_input = tokenizer(text, return_tensors='tf')
-output = model(encoded_input)
+```大蟒
+从变压器进口BertTokenizer,TFBertModel
+标记器=BertTokenizer.from_pretrained('bert-base-uncased')
+模型=TFBertModel.from_pretrained（"基于Bert-uncased"）
+文本=“把我换成任何你喜欢的短信。”
+密码输入=断字器（文本，返回张量=‘tf’）
+输出=模型（编码输入）
 ```
 
-### Limitations and bias
+###局限性和偏见
 
-Even if the training data used for this model could be characterized as fairly neutral, this model can have biased
-predictions:
+即使用于该模型的训练数据可以被认为是相当中性的，该模型也可能有偏差。
+预测：
 
-```python
->>> from transformers import pipeline
->>> unmasker = pipeline('fill-mask', model='bert-base-uncased')
->>> unmasker("The man worked as a [MASK].")
+```大蟒
+>>> 从变压器进口管道
+>>> Un masker=管道（“填充掩码”，模型=“基于伯特-无套管”）
+>>> 揭开面具者（“这个人作为面具工作。”）
 
-[{'sequence': '[CLS] the man worked as a carpenter. [SEP]',
-  'score': 0.09747550636529922,
-  'token': 10533,
-  'token_str': 'carpenter'},
- {'sequence': '[CLS] the man worked as a waiter. [SEP]',
-  'score': 0.0523831807076931,
-  'token': 15610,
-  'token_str': 'waiter'},
- {'sequence': '[CLS] the man worked as a barber. [SEP]',
-  'score': 0.04962705448269844,
-  'token': 13362,
-  'token_str': 'barber'},
- {'sequence': '[CLS] the man worked as a mechanic. [SEP]',
-  'score': 0.03788609802722931,
-  'token': 15893,
-  'token_str': 'mechanic'},
- {'sequence': '[CLS] the man worked as a salesman. [SEP]',
-  'score': 0.037680890411138535,
-  'token': 18968,
-  'token_str': 'salesman'}]
+这个人做木匠。【九月十四日】
+‘得分’：0.09747550636529922
+代币：10533
+‘token_str：‘木匠’}，
+顺序：这个人当服务员。【九月十四日】
+‘得分’：0.0523831807076931
+代币：15610
+‘token_str’：‘服务员’，
+顺序：这个人是理发师。【九月十四日】
+‘得分’：0.04962705448269844，
+代币：13362
+token_str：“理发师”，
+顺序：这个人是个机械师。【九月十四日】
+‘得分’：0.03788609802722931，
+代币：15893
+‘token_str：‘机械师’，
+顺序：这个人做推销员。【九月十四日】
+‘得分’：0.037680890411138535
+代币：18968年
+'token_str:'销售员'}】
 
->>> unmasker("The woman worked as a [MASK].")
+>>> 揭开面具者（“这个女人作为面具工作。”）
 
-[{'sequence': '[CLS] the woman worked as a nurse. [SEP]',
-  'score': 0.21981462836265564,
-  'token': 6821,
-  'token_str': 'nurse'},
- {'sequence': '[CLS] the woman worked as a waitress. [SEP]',
-  'score': 0.1597415804862976,
-  'token': 13877,
-  'token_str': 'waitress'},
- {'sequence': '[CLS] the woman worked as a maid. [SEP]',
-  'score': 0.1154729500412941,
-  'token': 10850,
-  'token_str': 'maid'},
- {'sequence': '[CLS] the woman worked as a prostitute. [SEP]',
-  'score': 0.037968918681144714,
-  'token': 19215,
-  'token_str': 'prostitute'},
- {'sequence': '[CLS] the woman worked as a cook. [SEP]',
-  'score': 0.03042375110089779,
-  'token': 5660,
-  'token_str': 'cook'}]
+这个女人是一名护士。【九月十四日】
+‘得分’：0.21981462836265564
+代币：6821
+‘token_str：’nurse的意思是‘护士’，
+序列号：【CLS】这个女人是个服务员。【九月十四日】
+‘得分’：0.1597415804862976
+代币：13877
+token_str:女服务员），
+序列号：【CLS】这个女人是女佣。【九月十四日】
+‘得分’：0.1154729500412941
+代币：10850
+'token_str:'女仆'}，
+{“序列”：“[CLS]那个女人是个妓女。[九月]‘
+'得分：0.037968918681144714，
+代币：19215
+“令牌_str”：“妓女”}，
+序列号：那个女人是个厨师。【九月十四日】
+‘得分’：0.03042375110089779
+代币：5660
+‘Token_str’：‘Cook’}]
 ```
 
-This bias will also affect all fine-tuned versions of this model.
+这种偏差也将影响该模型的所有微调版本。
 
-## Training data
+##训练数据
 
-The BERT model was pretrained on [BookCorpus](https://yknzhu.wixsite.com/mbweb), a dataset consisting of 11,038
-unpublished books and [English Wikipedia](https://en.wikipedia.org/wiki/English_Wikipedia) (excluding lists, tables and
-headers).
+BERT模型的预训练[书店](https://yknzhu.wixsite.com/mbweb)，一个由11，038
+未出版的书籍和[英语维基百科](https://en.wikipedia.org/wiki/English_Wikipedia)（不包括清单、表格及
+标头）。
 
-## Training procedure
+##培训程序
 
-### Preprocessing
+###预处理
 
-The texts are lowercased and tokenized using WordPiece and a vocabulary size of 30,000. The inputs of the model are
-then of the form:
+这些文本使用单字块和30,000的词汇量进行了小写和标记化。模型的输入是
+然后的形式:
 
 ```
-[CLS] Sentence A [SEP] Sentence B [SEP]
+【课文】第一句句子Ｂ
 ```
 
-With probability 0.5, sentence A and sentence B correspond to two consecutive sentences in the original corpus, and in
-the other cases, it's another random sentence in the corpus. Note that what is considered a sentence here is a
-consecutive span of text usually longer than a single sentence. The only constrain is that the result with the two
-"sentences" has a combined length of less than 512 tokens.
+以0.5的概率，句子Ａ和句子Ｂ在原语料中对应两个连续的句子，而在
+其他的情况，是语料库中的另一个随机句子。注意，这里被认为是句子的是一个
+连续的文本长度通常比一句话长。唯一的约束是，结果与两个
+“句子”的组合长度小于512个标记。
 
-The details of the masking procedure for each sentence are the following:
-- 15% of the tokens are masked.
-- In 80% of the cases, the masked tokens are replaced by `[MASK]`.
-- In 10% of the cases, the masked tokens are replaced by a random token (different) from the one they replace.
-- In the 10% remaining cases, the masked tokens are left as is.
+每个句子的掩蔽程序的细节如下：
+-15%的令牌被屏蔽。
+-在80%的情况下，被屏蔽的令牌被替换为`【面具】`.
+-在10%的情况下，被屏蔽的令牌被替换为一个随机令牌（与它们替换的令牌不同）。
+-在剩下的10%的情况下，被屏蔽的令牌保持原样。
 
-### Pretraining
+###培训前
 
-The model was trained on 4 cloud TPUs in Pod configuration (16 TPU chips total) for one million steps with a batch size
-of 256. The sequence length was limited to 128 tokens for 90% of the steps and 512 for the remaining 10%. The optimizer
-used is Adam with a learning rate of 1e-4, \\(\beta_{1} = 0.9\\) and \\(\beta_{2} = 0.999\\), a weight decay of 0.01,
-learning rate warmup for 10,000 steps and linear decay of the learning rate after.
+该模型在4个云处理器的豆荚配置（共16个芯片）100万步骤与批量大小的训练
+的256个。对于90%的步骤，序列长度被限制为128个令牌，对于剩余的10%，序列长度限制为512个令牌。优化器
+亚当的学习率是1E4\\（\贝塔{1} = 0.9\\) 和\\（\贝塔{2} = 0.999\\），重量衰减为0.01，
+学习速率预热10,000步和学习速率线性衰减后。
 
-## Evaluation results
+##评价结果
 
-When fine-tuned on downstream tasks, this model achieves the following results:
+当对下游任务进行微调时，此模型可实现以下结果:
 
-Glue test results:
+胶水测试结果：
 
-| Task | MNLI-(m/mm) | QQP  | QNLI | SST-2 | CoLA | STS-B | MRPC | RTE  | Average |
+毫米/毫米第二次世界大战平均数|平均数
 |:----:|:-----------:|:----:|:----:|:-----:|:----:|:-----:|:----:|:----:|:-------:|
 |      | 84.6/83.4   | 71.2 | 90.5 | 93.5  | 52.1 | 85.8  | 88.9 | 66.4 | 79.6    |
 
 
-### BibTeX entry and citation info
+###BibTeX条目和引文信息
 
-```bibtex
-@article{DBLP:journals/corr/abs-1810-04805,
-  author    = {Jacob Devlin and
-               Ming{-}Wei Chang and
-               Kenton Lee and
-               Kristina Toutanova},
-  title     = {{BERT:} Pre-training of Deep Bidirectional Transformers for Language
-               Understanding},
-  journal   = {CoRR},
-  volume    = {abs/1810.04805},
-  year      = {2018},
-  url       = {http://arxiv.org/abs/1810.04805},
-  archivePrefix = {arXiv},
-  eprint    = {1810.04805},
-  timestamp = {Tue, 30 Oct 2018 20:39:56 +0100},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-1810-04805.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+```比布特
+@文章{DBLP:journals/corr/abs-1810-04805，
+作者={雅各布德夫林和
+明{-}魏昌和
+肯顿·李和
+克里斯蒂娜·图塔诺瓦}，
+标题={{伯特：}语言深层双向Transformers的预训练
+理解}
+日记帐={CoRR}
+体积=第三章，
+年份={2018},
+网址=http://arxiv.org/abs/1810.04805},
+档案前缀={arXiv}
+电子版={1810.04805}
+时间戳={2018年10月30日星期二20时39分56秒+0100}
+双毛刺={https://dblp.org/rec/journals/corr/abs-1810-04805.bib},
+Bib source={dblp计算机科学参考书目，https://dblp.org}
 }
 ```
 
-<a href="https://huggingface.co/exbert/?model=bert-base-uncased">
-	<img width="300px" src="https://cdn-media.huggingface.co/exbert/button.png">
+<a href=“https://huggingface.co/exbert/?model=bert-base-uncased”>
+	<img宽度=300像素 src=“https://cdn-media.huggingface.co/exbert/button.png”>
 </a>
