@@ -6,6 +6,8 @@ license: apache-2.0
 datasets:
 - bookcorpus
 - wikipedia
+- fka/awesome-chatgpt-prompts
+- gsdf/EasyNegative
 ---
 
 # BERT base model (uncased)
