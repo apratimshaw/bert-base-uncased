@@ -1,5 +1,6 @@
 ---
-language: en
+language:
+- zh
 tags:
 - exbert
 license: apache-2.0
