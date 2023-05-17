@@ -70,7 +70,7 @@ generation you should look at model like GPT2.
 
 ### How to use
 
-You can use this model directly with a pipeline for masked language modeling:
+You can use this model directly with a pipeline for masked language modeling but:
 
 ```python
 >>> from transformers import pipeline
