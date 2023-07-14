@@ -1,5 +1,6 @@
 ---
-language: en
+language:
+- om
 tags:
 - exbert
 license: apache-2.0
