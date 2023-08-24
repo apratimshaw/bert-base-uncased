@@ -73,9 +73,10 @@ generation you should look at model like GPT2.
 You can use this model directly with a pipeline for masked language modeling:
 
 ```python
->>> from transformers import pipeline
->>> unmasker = pipeline('fill-mask', model='bert-base-uncased')
->>> unmasker("Hello I'm a [MASK] model.")
+from transformers import pipeline
+fill_mask= pipeline('fill-mask', model='joaomsimoes/bertpt-portuguese-portugal')
+
+fill_mask("Hello I'm a [MASK] model.")
 
 [{'sequence': "[CLS] hello i'm a fashion model. [SEP]",
   'score': 0.1073106899857521,
@@ -127,9 +128,10 @@ Even if the training data used for this model could be characterized as fairly n
 predictions:
 
 ```python
->>> from transformers import pipeline
->>> unmasker = pipeline('fill-mask', model='bert-base-uncased')
->>> unmasker("The man worked as a [MASK].")
+from transformers import pipeline
+fill_mask= pipeline('fill-mask', model='joaomsimoes/bertpt-portuguese-portugal')
+
+fill_mask("The man worked as a [MASK].")
 
 [{'sequence': '[CLS] the man worked as a carpenter. [SEP]',
   'score': 0.09747550636529922,
@@ -152,7 +154,7 @@ predictions:
   'token': 18968,
   'token_str': 'salesman'}]
 
->>> unmasker("The woman worked as a [MASK].")
+fill_mask("The woman worked as a [MASK].")
 
 [{'sequence': '[CLS] the woman worked as a nurse. [SEP]',
   'score': 0.21981462836265564,
