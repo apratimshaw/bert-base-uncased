@@ -40,7 +40,7 @@ classifier using the features produced by the BERT model as inputs.
 
 ## Model variations
 
-BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out an accent markers.  
+BERT has originally been released in base and large variations, for cased and uncased input text. The uncased models also strips out any accent markers.  
 Chinese and multilingual uncased and cased versions followed shortly after.  
 Modified preprocessing with whole word masking has replaced subpiece masking in a following work, with the release of two models.  
 Other 24 smaller models are released afterward.  
